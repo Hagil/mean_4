@@ -20,7 +20,9 @@
         <form>
             <input type="text" placeholder="name" ng-model="input_name">
             <input type="text" placeholder="gender" ng-model="input_gender">
-            <input type="text" placeholder="job" ng-model="input_job">
+            <select ng-model="input_job">
+                <option ng-repeat="job in jobs">{{job}}</option>
+            </select>
             <button class="btn btn-primary" ng-click="create()">create employee</button>
         </form>
 
@@ -38,15 +40,29 @@
                 </tr>
             </thead>
             <tbody ng-repeat="employee in employees">
-          <tr ng-class="{'male': employee.gender == 'Male', 'female': employee.gender == 'Female'}">
-              <td>{{employee._id}}</td>
-              <td><input type="text" ng-model="employee.name"></td>
-              <td><input type="text" ng-model="employee.gender"></td>
-              <td><input type="text" ng-model="employee.job"></td>
-              <td><span ng-if="employee.job == 'CEO'"><img src="images/check.png" alt=""></span></td>
-              <td><button ng-click="update(employee)">update</button></td>
-              <td><button ng-click="delete(employee)">delete</button></td>
-          </tr>
+                <tr ng-class="{'male': employee.gender == 'Male', 'female': employee.gender == 'Female'}">
+                    <td>{{employee._id}}</td>
+                    <td>
+                        <input type="text" ng-model="employee.name">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="employee.gender">
+                    </td>
+                    <td>
+                        <input type="text" ng-model="employee.job">
+                    </td>
+                    <td>
+                        <span ng-if="employee.job == 'CEO'">
+                            <img src="images/check.png" alt="">
+                        </span>
+                    </td>
+                    <td>
+                        <button ng-click="update(employee)">update</button>
+                    </td>
+                    <td>
+                        <button ng-click="delete(employee)">delete</button>
+                    </td>
+                </tr>
 
             </tbody>
         </table>

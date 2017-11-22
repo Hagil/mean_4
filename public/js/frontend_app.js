@@ -52,4 +52,13 @@ function data_stuff($scope, $http) {
             $scope.read();
         });
     }
+
+    $scope.dropdown = function (){
+        console.log('getting jobs');
+        $http.get('/api/v3/jobsdropdown').then(function (jobs){
+            console.log(jobs);
+            $scope.jobs = jobs.data;
+        });
+    }
+    $scope.dropdown();
 }
