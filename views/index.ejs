@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>MEAN demo</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,8 +10,55 @@
     <script src="js/frontend_app.js"></script>
 
 </head>
-<body>
-    <h1>MEAN demo</h1>
+
+<body ng-app="employees">
+    <h1>MEAN4 demo</h1>
+
+    <div ng-controller="data">
+        <h4>{{message}}</h4>
+        <h2>CREATE</h2>
+        <form>
+            <input type="text" placeholder="name" ng-model="input_name">
+            <input type="text" placeholder="gender" ng-model="input_gender">
+            <input type="text" placeholder="job" ng-model="input_job">
+            <button class="btn btn-primary" ng-click="create()">create employee</button>
+        </form>
+
+        <h2>READ</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>_id</th>
+                    <th>name</th>
+                    <th>gender</th>
+                    <th>job</th>
+                    <th>important?</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="employee in employees">
+          <tr>
+              <td>{{employee._id}}</td>
+              <td><input type="text" ng-model="employee.name"></td>
+              <td><input type="text" ng-model="employee.gender"></td>
+              <td><input type="text" ng-model="employee.job"></td>
+              <td>image</td>
+              <td><button ng-click="update(employee)">update</button></td>
+              <td><button ng-click="delete(employee)">delete</button></td>
+          </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+
 
 </body>
+
 </html>
