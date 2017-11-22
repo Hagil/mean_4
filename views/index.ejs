@@ -43,7 +43,7 @@
               <td><input type="text" ng-model="employee.name"></td>
               <td><input type="text" ng-model="employee.gender"></td>
               <td><input type="text" ng-model="employee.job"></td>
-              <td>image</td>
+              <td><span ng-if="employee.job == 'CEO'"><img src="images/check.png" alt=""></span></td>
               <td><button ng-click="update(employee)">update</button></td>
               <td><button ng-click="delete(employee)">delete</button></td>
           </tr>

@@ -25,8 +25,8 @@ function data_stuff($scope, $http) {
         $http.post('/api/v3/create', data).then(function (result){
             console.log(result);
             $scope.message = result.data.message;
+            $scope.read();
         });
-        $scope.read();
     }
 
     $scope.update = function (employee) {
@@ -37,14 +37,19 @@ function data_stuff($scope, $http) {
             gender: employee.gender,
             job: employee.job
         }
-        $http.put('/api/v3/update', data).then();
-        $scope.read();
+        $http.put('/api/v3/update', data).then(function (result){
+            console.log(result);
+            $scope.message = result.data.message;
+            $scope.read();
+        });
     }
 
     $scope.delete = function (employee) {
         console.log('deleting employee');
-        $http.delete('/api/v3/delete/' + employee._id).then();
-        $scope.read();
+        $http.delete('/api/v3/delete/' + employee._id).then(function (result){
+            console.log(result);
+            $scope.message = result.data.message;
+            $scope.read();
+        });
     }
-
 }
